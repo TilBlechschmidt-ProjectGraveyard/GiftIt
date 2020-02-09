@@ -1,12 +1,12 @@
 //
 //  Wish.swift
-//  Async
+//
 //
 //  Created by Noah Peeters on 08.02.20.
 //
 
-import Vapor
 import FluentSQLite
+import Graphiti
 
 /// A single entry of a Wish list.
 final class Wish: SQLiteModel {
@@ -16,18 +16,29 @@ final class Wish: SQLiteModel {
     /// A title describing what this `Wish` entails.
     var title: String
 
+    var url: URL?
+
+    var price: Int
+
     /// Creates a new `Wish`.
-    init(id: Int? = nil, title: String) {
+    init(id: Int? = nil, title: String, url: URL?, price: Int) {
         self.id = id
         self.title = title
+        self.url = url
+        self.price = price
     }
 }
 
 /// Allows `Wish` to be used as a dynamic migration.
 extension Wish: Migration { }
 
-/// Allows `Wish` to be encoded to and decoded from HTTP messages.
-extension Wish: Content { }
+extension Wish: FieldKeyProvider {
+    typealias FieldKey = FieldKeys
 
-/// Allows `Wish` to be used as a dynamic parameter in route definitions.
-extension Wish: Parameter { }
+    enum FieldKeys: String {
+        case id
+        case title
+        case url
+        case price
+    }
+}

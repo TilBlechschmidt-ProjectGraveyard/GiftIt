@@ -9,13 +9,18 @@ import FluentSQLite
 import Vapor
 
 /// Called before your application initializes.
-public func configure(_ config: inout Config, _ env: inout Environment, _ services: inout Services) throws {
+public func configure(_ config: inout Config, _ env: Environment, _ services: inout Services, eventLoopGroup: EventLoopGroup) throws {
+
+    let root = GiftItAPI()
     // Register providers first
     try services.register(FluentSQLiteProvider())
 
     // Register routes to the router
     let router = EngineRouter.default()
-    try routes(router)
+    staticRoutes(router)
+    router.serve(giftItScheme, root: root, eventLoopGroup: eventLoopGroup, at: "api") { connectable in
+        DatabaseStore(databaseConnectable: connectable)
+    }
     services.register(router, as: Router.self)
 
     // Register middleware
@@ -35,5 +40,6 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     // Configure migrations
     var migrations = MigrationConfig()
     migrations.add(model: Wish.self, database: .sqlite)
+    migrations.add(model: User.self, database: .sqlite)
     services.register(migrations)
 }

@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "CRuntime",
+        "repositoryURL": "https://github.com/wickwirew/CRuntime.git",
+        "state": {
+          "branch": null,
+          "revision": "95f911318d8c885f6fc05e971471f94adfd39405",
+          "version": "2.1.2"
+        }
+      },
+      {
         "package": "Crypto",
         "repositoryURL": "https://github.com/vapor/crypto.git",
         "state": {
@@ -56,6 +65,24 @@
         }
       },
       {
+        "package": "Graphiti",
+        "repositoryURL": "https://github.com/GraphQLSwift/Graphiti.git",
+        "state": {
+          "branch": null,
+          "revision": "1fbebadba9961f16dec54156a7bc6ce9297a08a0",
+          "version": "0.11.0"
+        }
+      },
+      {
+        "package": "GraphQL",
+        "repositoryURL": "https://github.com/GraphQLSwift/GraphQL.git",
+        "state": {
+          "branch": null,
+          "revision": "b10a33de33820dea4ba5f4b2df28c30b52958425",
+          "version": "0.12.0"
+        }
+      },
+      {
         "package": "HTTP",
         "repositoryURL": "https://github.com/vapor/http.git",
         "state": {
@@ -80,6 +107,15 @@
           "branch": null,
           "revision": "d76f339c9716785e5079af9d7075d28ff7da3d92",
           "version": "3.1.0"
+        }
+      },
+      {
+        "package": "Runtime",
+        "repositoryURL": "https://github.com/wickwirew/Runtime.git",
+        "state": {
+          "branch": null,
+          "revision": "61c9776f47d2951bdc562486ad348e5e1ca2e180",
+          "version": "2.1.1"
         }
       },
       {
